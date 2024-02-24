@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        #post_title{
+            color: black;
+        }
+        #post_content {
+            color: grey;
+        }
+        #post_published_date {
+            color:cyan;
+        }
+        
+    </style>
+</head>
+<body>
+    {% for post in posts %}
+    {% if post.status == 0%}
+    <p>This post is not published yet </p>
+    {% else %}
+    <h1 id="post_title">{{post.title}}</h1>
+    <p id="post_content">{{post.content}}</p>
+    <small id="post_published_date">{{post.published_date}}</small>
+    {% endif %}
+    {% endfor %}    
+</body>
+</html>
