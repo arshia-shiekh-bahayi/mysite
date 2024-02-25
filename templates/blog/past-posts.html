@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>لیست پست‌ها</title>
+</head>
+<body>
+
+<h1>پست‌های گذشته</h1>
+
+<ul>
+    {% for post in past_posts %}
+        <li>{{ post.title }}</li>
+        <p>{{ post.text }}</p>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
