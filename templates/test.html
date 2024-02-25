@@ -14,18 +14,8 @@
         #post_published_date {
             color:cyan;
         }
-        
     </style>
-</head>
 <body>
-    {% for post in posts %}
-    {% if post.status == 0%}
-    <p>This post is not published yet </p>
-    {% else %}
-    <h1 id="post_title">{{post.title}}</h1>
-    <p id="post_content">{{post.content}}</p>
-    <small id="post_published_date">{{post.published_date}}</small>
-    {% endif %}
-    {% endfor %}    
+    <p>{{post.title}}</p>
 </body>
 </html>
