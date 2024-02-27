@@ -11,11 +11,6 @@ def blog_single(request,pid):
     post = get_object_or_404(posts, pk=pid) 
     context = {'post':post}
     return render(request,'blog/blog-single.html',context)
-def test(request,pid):
-    #post = Post.objects.get(id=pid)
-    post = get_object_or_404(Post, pk=pid) 
-    context = {'post':post}
-    return render(request,'test.html',context)
 def past_post_list(request):
     past_posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'E:/Django course/mysite/templates/blog/past-posts.html', {'past_posts': past_posts})
