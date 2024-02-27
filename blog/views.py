@@ -9,6 +9,8 @@ def blog_view(request):
 def blog_single(request,pid):
     posts = Post.objects.filter(status =1)
     post = get_object_or_404(posts, pk=pid) 
+    post.counted_views += 1
+    post.save()  
     context = {'post':post}
     return render(request,'blog/blog-single.html',context)
 def past_post_list(request):
