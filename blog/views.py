@@ -13,3 +13,14 @@ def blog_single(request,pid):
     post.save()  
     context = {'post':post}
     return render(request,'blog/blog-single.html',context)
+def prev_post(request,pid):
+    posts = Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date')
+    post = get_object_or_404(posts, pk = pid-1)
+    context = {'post':post}
+    return render(request,'blog/blog-single.html',context)
+def next_post(request,pid):
+    posts = Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date')
+    post = get_object_or_404(posts, pk = pid+1)
+    context = {'post':post}
+    return render(request,'blog/blog-single.html',context)
+    
