@@ -92,13 +92,15 @@
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							{{post.category.all|join:", "}}				
+							{% for cat in post.category.all%}
+					     		<a href="#">{{cat.name}}</a>{% if not forloop.last%},{% endif %}
+							{% endfor %}				
 						</ul>
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
 									class="lnr lnr-user"></span></p>
 							{% if post.status == 1%}		
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date}}</a> <span
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d/M/Y"}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 						
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}}</a> <span
@@ -119,8 +121,7 @@
 						</a>
 						{% if post.status == 1%}
 						<p class="excert">
-							{{post.content}}
-
+							{{post.content|truncatechars:100}}
 						</p>
 						{% endif %}
 						<a href="#" class="primary-btn">View More</a>
