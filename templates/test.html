@@ -1,3 +1,4 @@
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
     <style>
-        #post_title{
-            color: black;
-        }
-        #post_content {
-            color: grey;
-        }
-        #post_published_date {
-            color:cyan;
+        p{
+            font-size:10mm;
         }
     </style>
 <body>
-    <p>{{post.title}}</p>
+    <h1>Testing page</h1>
+    <p>test: {% posts as totalposts %}</p>
+    {% for post in totalposts %}
+         <p>{{post}}</p>
+    {% endfor %}
 </body>
 </html>
