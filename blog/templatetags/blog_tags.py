@@ -18,5 +18,6 @@ def function(pid):
 @register.simple_tag(name='next_post')
 def function(pid):
     posts = Post.objects.filter(status=1)
+    posts_number = posts.count()
     post  = get_object_or_404(posts , pk= pid+1)
-    return post
+    return post,posts_number
