@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_resized import ResizedImageField
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length =255)
@@ -9,6 +10,7 @@ class Category(models.Model):
         return self.name
 class Post(models.Model):
     image = models.ImageField(upload_to='blog/', default='blog/default.jpg') 
+    logo_image = ResizedImageField(size=[60, 60], upload_to='blog/' ,default='blog/c5.jpg')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
