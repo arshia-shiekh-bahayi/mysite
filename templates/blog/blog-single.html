@@ -77,7 +77,7 @@
 							</div>
 							<div class="detials">
 								<p>Prev Post</p>
-								<a href="{% prev_post post.id%}">
+								<a href="{{prev_post.id}}">
 									<h4>Space The Final Frontier</h4>
 								</a>
 								
@@ -88,7 +88,7 @@
 							<div class="detials">
 								<p>Next Post</p>
 								{% if post.status == 1%}
-								<a href="{% next_post post.id %}">
+								<a href="{{next_post.id}}">
 									<h4>Telescopes 101</h4>
 								</a>
 								{% endif %}
