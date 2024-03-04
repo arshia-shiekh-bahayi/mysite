@@ -10,14 +10,3 @@ def function():
 def function():
     posts = Post.objects.filter(status=1)
     return posts
-@register.simple_tag(name='prev_post')
-def function(pid):
-    posts = Post.objects.filter(status=1)
-    post  = get_object_or_404(posts , pk= pid-1)
-    return post
-@register.simple_tag(name='next_post')
-def function(pid):
-    posts = Post.objects.filter(status=1)
-    posts_number = posts.count()
-    post  = get_object_or_404(posts , pk= pid+1)
-    return post,posts_number
