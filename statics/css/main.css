@@ -3655,6 +3655,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .popular-post-widget .popular-post-list .thumb img {
+  max-width:100px;
   width: 100%;
 }
 
