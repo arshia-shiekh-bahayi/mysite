@@ -1,18 +1,18 @@
-{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <style>
-        p{
-            font-size:10mm;
-        }
-    </style>
+    <title>Document</title>
+</head>
 <body>
-    <h1>Testing page</h1>
-    <p>test:</p>
-    {% popularposts %}
+    <form action="{% url 'website:test'%}" method="post">
+        {% csrf_token %}
+        <div><label for="">name:</label><input name="name" type="text"></div><br>
+        <div><label for="">email:</label><input name="email" type="email"></div><br>
+        <div><label for="">subject:</label><input name="subject" type="text"></div><br>
+        <div><label for="">message:</label><input name="message" type="text"></div><br>
+        <button name=submit type="submit"></button>
+    </form>
 </body>
 </html>
