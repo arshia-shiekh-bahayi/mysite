@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from blog.models import Post
 from django.core.paginator import Paginator
 from website.models import Contact
-from website.froms import NameForm
+from website.forms import NameForm, ContactForm
 def index_view(request,arg=6):
     posts = Post.objects.filter(status=1).order_by('-published_date')[:arg]
     posts = Paginator(posts,2)
@@ -15,12 +15,13 @@ def contact_view(request):
         return render(request,'website/contact.html')
 def test_view(request):
        if request.method == 'POST':
-              form = NameForm(request.POST)
+              form = ContactForm(request.POST)
               if form.is_valid():
-                     return HttpResponse('done')
+                     form.save()
+                     return HttpResponse('done')                     
               else :
                      return HttpResponse("not valid")
                      
-       form  =NameForm()
+       form  =ContactForm()
        return render(request,'test.html',{'form':form})
 
