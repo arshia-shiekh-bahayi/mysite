@@ -4,6 +4,7 @@ from blog.models import Post
 from django.core.paginator import Paginator
 from website.models import Contact
 from website.forms import NameForm, ContactForm , NewsletterForm
+from django.contrib import messages
 def index_view(request,arg=6):
     posts = Post.objects.filter(status=1).order_by('-published_date')[:arg]
     posts = Paginator(posts,2)
@@ -18,6 +19,9 @@ def contact_view(request):
                form = ContactForm(request.POST)
                if form.is_valid():
                       form.save()
+                      messages.add_message(request,messages.SUCCESS,'your ticket had been submited successfully')
+               else :
+                      messages.add_message(request,messages.ERROR,'your ticket had not been submited successfully')
         form = ContactForm()              
         return render(request,'website/contact.html',{"form":form})
 
@@ -26,9 +30,9 @@ def newsletter_view(request):
               form = NewsletterForm(request.POST)
               if form.is_valid():
                      form.save()
-                     HttpResponseRedirect('/')                    
-              else :
-                     HttpResponseRedirect('/')                     
+                     return HttpResponseRedirect('/')                    
+       else :
+         return HttpResponseRedirect('/')                     
        form  =ContactForm()
        return render(request,'newsletter.html',{'form':form})
 
