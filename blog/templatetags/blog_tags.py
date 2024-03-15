@@ -1,5 +1,6 @@
 from django import template
-from blog.models import Post
+from blog.models import Post 
+from taggit.models import Tag
 from blog.models import Category
 from django.shortcuts import get_object_or_404
 register = template.Library()
@@ -28,3 +29,11 @@ def postcategories():
     for name in categories:
         cat_dict[name]=posts.filter(category=name).count()
     return {"categories":cat_dict}
+@register.inclusion_tag("blog/homeblog-tags.html")
+def tags():
+    posts = Post.objects.filter(status=1)
+    tags = Tag.objects.all()
+    tags_dict = {}
+    for tag_name in tags:
+        tags_dict[tag_name]= posts.filter(tags=tag_name)
+    return{"tags":tags_dict}

@@ -8,6 +8,8 @@ def blog_view(request,**kwargs):
      posts = posts.filter(category__name=kwargs['cat_name'])
     if kwargs.get('author_username') != None:
      posts = posts.filter(author__username=kwargs['author_username'])
+    if kwargs.get('tag_name') != None:
+     posts = posts.filter(tags__name__in=[kwargs['tag_name']])
     posts = Paginator(posts,3)
     try:
      page_number = request.GET.get('page')
@@ -31,15 +33,6 @@ def blog_single(request,pid):
     context = {'post':post,'next_post':next_post,'prev_post':prev_post}
     return render(request,'blog/blog-single.html',context)
 
-def test(request):
-    return render(request,'test.html')
-
-def blog_category(request, cat_name):
-   posts = Post.objects.filter(status=1)
-   posts = posts.filter(category__name=cat_name)
-   context = {'posts':posts}
-   return render(request,'blog/blog-home.html',context)
-
 def blog_search(request):
    posts = Post.objects.filter(status=1)
    if request.method == 'GET':
@@ -47,3 +40,6 @@ def blog_search(request):
        posts = posts.filter(content__contains=s)
    context = {'posts':posts}
    return render(request,'blog/blog-home.html',context)
+
+def test(request):
+    return render(request,'test.html')
