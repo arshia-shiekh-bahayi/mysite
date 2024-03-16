@@ -3,6 +3,7 @@ from blog.models import Post
 from taggit.models import Tag
 from blog.models import Category
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 register = template.Library()
 @register.simple_tag(name='totalposts')
 def function():
@@ -17,7 +18,8 @@ def snippet(value,arg=20):
     return value[:arg]+'...'
 @register.inclusion_tag("blog/popularposts.html")
 def latestposts(arg=3):
-    posts = Post.objects.filter(status=1).order_by('-published_date')[:arg]
+    now = timezone.now()
+    posts = Post.objects.filter(status=1,published_date__lt=now).order_by('-published_date')[:arg]
     return {"posts": posts}
 
 
