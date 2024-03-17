@@ -122,7 +122,7 @@
 						</a>
 						{% if post.status == 1%}
 						<p class="excert">
-							{{post.content|truncatewords:15}}
+							{{post.snippets|safe}}
 						</p>
 						{% endif %}
 						<a href="#" class="primary-btn">View More</a>

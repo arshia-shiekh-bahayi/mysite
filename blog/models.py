@@ -28,7 +28,10 @@ class Post(models.Model):
         ordering = ["created_date",]
     def __str__(self):
         return "{} {}".format(self.title ,self.id)
-    #def snippets(self):
-      #  return self.content[:100] + '...'
+    def snippets(self):
+        if len(self.content)>100:
+         return self.content[:100] + '...'
+        else :
+            return self.content
     def get_absolute_url(self):
         return reverse('blog:single', kwargs={'pid': self.id})

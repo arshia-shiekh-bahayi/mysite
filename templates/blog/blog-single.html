@@ -3,7 +3,10 @@
 {% load blog_tags %}
 {% block content%}
 <!-- start banner Area -->
-<head><link rel="stylesheet" href="{% static 'css/main.css' %}"></head>
+
+<head>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
 <section class="relative about-banner">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
@@ -40,9 +43,10 @@
 							<li><a href="#">Lifestyle</a></li>
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
-									class="lnr lnr-user"></span></p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d/M/Y"}}</a> <span
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span></p>
+							<p class="date col-lg-12 col-md-12 col-6"><a
+									href="#">{{post.published_date|date:"d/M/Y"}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}}</a> <span
 									class="lnr lnr-eye"></span></p>
@@ -57,21 +61,22 @@
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9">
-						
+
 						<h3 class="mt-20 mb-20">{{post.title}}</h3>
 						<p class="excert">
-							{{post.content}}
+							{{post.content|safe}}
 						</p>
-						
+
 					</div>
-					
+
 				</div>
 				<div class="navigation-area">
 					<div class="row">
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 							<div class="thumb">
-								<a href="{{prev_post.id}}"><img class="img-fluid" src="{{prev_post.image.url}}" alt=""></a>
+								<a href="{{prev_post.id}}"><img class="img-fluid" src="{{prev_post.image.url}}"
+										alt=""></a>
 							</div>
 							<div class="arrow">
 								<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
@@ -83,7 +88,7 @@
 								<a href="{{prev_post.id}}">
 									<h4>{{prev_post.title}}</h4>
 								</a>
-								
+
 							</div>
 						</div>
 						<div
@@ -95,18 +100,42 @@
 								<a href="{{next_post.id}}">
 									<h4>{{next_post.title}}</h4>
 								</a>
-								
+
 
 							</div>
 							<div class="arrow">
 								<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
 							</div>
 							<div class="thumb">
-								<a href="{{next_post.id}}"><img class="img-fluid" src="{{next_post.image.url}}" alt=""></a>
+								<a href="{{next_post.id}}"><img class="img-fluid" src="{{next_post.image.url}}"
+										alt=""></a>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="comments-area">
+					<div id="disqus_thread"></div>
+					<script>
+						/**
+						*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+						*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+						/*
+						var disqus_config = function () {
+						this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+						this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						*/
+						(function () { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://127-0-0-1-8000-snhzsveihm.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+							powered by Disqus.</a></noscript>
+				</div>
+				<!--
 				<div class="comments-area">
 					<h4>05 Comments</h4>
 					<div class="comment-list">
@@ -229,7 +258,8 @@
 						</div>
 						<a href="#" class="primary-btn text-uppercase">Post Comment</a>
 					</form>
-				</div>
+				</div>-->
+
 			</div>
 			<div class="col-lg-4 sidebar-widgets">
 				<div class="widget-wrap">
@@ -241,11 +271,11 @@
 						</form>
 					</div>
 
-                    {% include 'blog/blog-writer.html' %}
-					
+					{% include 'blog/blog-writer.html' %}
+
 					{% latestposts 3 %}
-					
-                    {% include 'blog/blog-ads.html' %}
+
+					{% include 'blog/blog-ads.html' %}
 
 					{% postcategories %}
 					<div class="single-sidebar-widget newsletter-widget">
