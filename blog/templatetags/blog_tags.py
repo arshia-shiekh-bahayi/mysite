@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post 
+from blog.models import Post ,Comment
 from taggit.models import Tag
 from blog.models import Category
 from django.shortcuts import get_object_or_404
@@ -39,3 +39,6 @@ def tags():
     for tag_name in tags:
         tags_dict[tag_name]= posts.filter(tags=tag_name)
     return{"tags":tags_dict}
+@register.simple_tag(name='comments_count')
+def function(pid):
+    return Comment.objects.filter(post=pid,approved=True).count()
