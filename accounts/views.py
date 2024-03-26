@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render , redirect
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
@@ -34,7 +35,7 @@ def signup_view(request):
             form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
-                return render(request, 'accounts/login.html')
+                return HttpResponseRedirect(reverse('accounts:login'))
         form = UserCreationForm()
         context = {'form':form}
         return render(request,'accounts/signup.html',context)
