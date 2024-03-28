@@ -160,3 +160,5 @@ X_FRAM_OPTIONS = 'SAMEORIGIN'
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+

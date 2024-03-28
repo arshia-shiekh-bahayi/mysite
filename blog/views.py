@@ -8,8 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 def blog_view(request,**kwargs):
-    posts = Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date')
-    
+    posts = Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date') 
     if kwargs.get('cat_name') != None:
      posts = posts.filter(category__name=kwargs['cat_name'])
     if kwargs.get('author_username') != None:
