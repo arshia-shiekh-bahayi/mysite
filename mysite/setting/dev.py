@@ -8,7 +8,8 @@ SECRET_KEY = 'django-insecure-ub86iu+m2yw6fvsgl!@aw-7h*c==ihssentv=4ezehev90n6ep
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['domin2000.com','www.domin2000.com']
+
 
 INSTALLED_APPS += ['debug_toolbar',]
 
