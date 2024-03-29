@@ -6,7 +6,7 @@ from django.urls import reverse
 from accounts.models import UserData
 from django.contrib.auth.models import User
 from accounts.forms import  Email_AuthenticationForm, SignUpForm
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 ##
 def login_view(request):
@@ -54,6 +54,7 @@ def login_email_view(request):
         return redirect('/')
 
 ##     
+@login_required
 def logout_view(request):
     if not request.user.is_authenticated:
        return render(request, 'accounts/login.html')
