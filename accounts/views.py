@@ -3,9 +3,10 @@ from django.shortcuts import render , redirect , HttpResponse
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.urls import reverse
+from django.core.mail import send_mail
 from accounts.models import UserData
 from django.contrib.auth.models import User
-from accounts.forms import  Email_AuthenticationForm, SignUpForm
+from accounts.forms import  Email_AuthenticationForm, SignUpForm , ResetPasswordForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 ##
@@ -29,12 +30,9 @@ def login_view(request):
 ##
 def login_email_view(request):
     if not request.user.is_authenticated:
-        print('1')
         if request.method == 'POST':
-            print('2')
             form = Email_AuthenticationForm(request.POST)
             if form.is_valid():
-             print('3')
              email = form.cleaned_data.get('username')
              try:
               username = User.objects.get(email=email).username
@@ -43,7 +41,6 @@ def login_email_view(request):
              password = form.cleaned_data.get('password')
              user = authenticate(request, username=username, password=password)
              if user is not None:
-                 print("4")
                  login(request,user)
                  return redirect('/')
 
@@ -93,4 +90,18 @@ def signup_view(request):
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form':form})
 ##
-
+def forgot_password_view(request):
+    if not request.user.is_authenticated:
+        print('1')
+        if request.method == "POST":
+         print('2')
+         form = ResetPasswordForm()
+         if form.is_valid():
+          print('3')
+          email = form.cleaned_data.get('email')
+          message = 'this message is for your request to reset your password'
+          send_mail('Reset Password', message , 'arshiasheikhbahayi@gmail.com', [email] ,fail_silently=False)
+          return HttpResponseRedirect(reverse('accounts:login'))
+        else:
+           form = ResetPasswordForm()
+        return render(request , 'accounts/forgot-password.html', {'form':form})

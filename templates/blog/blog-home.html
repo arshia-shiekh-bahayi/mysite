@@ -90,6 +90,7 @@
 		<div class="row">
 			<div class="col-lg-8 posts-list">
 				{% for post in posts%}
+				 {% if post.login_require == False %}
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
@@ -128,6 +129,7 @@
 						<a href="#" class="primary-btn">View More</a>
 					</div>
 				</div>
+				{% endif %}
 				{% endfor %}
 
 				<nav class="blog-pagination justify-content-center d-flex">

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django_resized import ResizedImageField
+
 from django.urls import reverse
 from taggit.managers import TaggableManager
 # Create your models here.

@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-ub86iu+m2yw6fvsgl!@aw-7h*c==ihssentv=4ezehev90n6ep
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['domin2000.com','www.domin2000.com']
+ALLOWED_HOSTS = ['domin2000.com','www.domin2000.com','127.0.0.1']
 
 
 INSTALLED_APPS += ['debug_toolbar',]
@@ -31,5 +31,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
-X_FRAM_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 

@@ -9,4 +9,8 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 class Email_AuthenticationForm(forms.Form):
     username = forms.EmailField()
-    password = password = forms.CharField()
+    password = forms.CharField()
+class ResetPasswordForm(forms.Form):
+    email = forms.EmailField()
+
+
