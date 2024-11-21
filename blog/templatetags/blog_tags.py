@@ -2,7 +2,6 @@ from django import template
 from blog.models import Post, Comment
 from taggit.models import Tag
 from blog.models import Category
-from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
 register = template.Library()

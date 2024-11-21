@@ -1,12 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 from django.core.mail import send_mail
 from accounts.models import UserData
 from django.contrib.auth.models import User
-from accounts.forms import Email_AuthenticationForm, SignUpForm, ResetPasswordForm
+from accounts.forms import (Email_AuthenticationForm,
+                            SignUpForm, ResetPasswordForm)
 from django.contrib.auth.decorators import login_required
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
-from blog.views import *
-from . import views
+from blog.views import (blog_view, blog_single,
+                        blog_search,)
 from blog.feeds import LatestEntriesFeed
 
 app_name = "blog"
@@ -12,5 +12,4 @@ urlpatterns = [
     path("author/<str:author_username>", blog_view, name="author"),
     path("search/", blog_search, name="search"),
     path("rss/feed", LatestEntriesFeed()),
-    path("test", test, name="test"),
 ]
