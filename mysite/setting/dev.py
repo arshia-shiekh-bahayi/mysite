@@ -1,4 +1,4 @@
-from mysite.settings import *
+from mysite.settings import INSTALLED_APPS, BASE_DIR
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/

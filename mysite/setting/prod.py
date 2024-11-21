@@ -1,7 +1,6 @@
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-from mysite.settings import *
-
+from mysite.settings import BASE_DIR
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ub86iu+m2yw6fvsgl!@aw-7h*c==ihssentv=4ezehev90n6ep"
 
