@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from blog.models import Post
 from django.core.paginator import Paginator
-from website.models import Contact
-from website.forms import NameForm, ContactForm, NewsletterForm
+from website.forms import ContactForm, NewsletterForm
 from django.contrib import messages
 
 
