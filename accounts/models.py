@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.backends import BaseBackend , ModelBackend
+from django.contrib.auth.backends import BaseBackend, ModelBackend
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.forms import AuthenticationForm
+
 
 # Create your models here.
 class UserData(models.Model):
@@ -28,5 +29,3 @@ class AuthenticationForm(AuthenticationForm):
             return UserModel.objects.get(pk=user_id)
         except UserModel.DoesNotExist:
             return None
-
-
